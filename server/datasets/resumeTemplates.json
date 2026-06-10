@@ -1,0 +1,16 @@
+[
+  {
+    "role": "Frontend Developer",
+    "summary": "Frontend Developer skilled in React, JavaScript, HTML and CSS."
+  },
+
+  {
+    "role": "Backend Developer",
+    "summary": "Backend Developer experienced in Node.js, Express and MongoDB."
+  },
+
+  {
+    "role": "Data Analyst",
+    "summary": "Data Analyst skilled in SQL, Python and Power BI."
+  }
+]

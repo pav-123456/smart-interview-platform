@@ -1,0 +1,25 @@
+{
+  "Frontend Developer": {
+    "Beginner": [
+      "What is React?",
+      "What is JSX?",
+      "What are props?"
+    ],
+    "Intermediate": [
+      "Explain Virtual DOM",
+      "What are React Hooks?",
+      "What is State?"
+    ]
+  },
+
+  "Backend Developer": {
+    "Beginner": [
+      "What is Node.js?",
+      "What is Express?"
+    ],
+    "Intermediate": [
+      "Explain JWT",
+      "What is REST API?"
+    ]
+  }
+}

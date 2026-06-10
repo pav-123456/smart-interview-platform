@@ -1,0 +1,704 @@
+/* ============================================================
+   RESUME BUILDER — Canva-like Advanced Styles
+   Cartoon Brutalist + Modern SaaS hybrid
+   ============================================================ */
+
+/* ---- GOOGLE FONTS IMPORT ---- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&family=Lato:wght@300;400;700;900&family=Montserrat:wght@300;400;500;600;700;800;900&family=Merriweather:wght@300;400;700;900&family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+
+/* ============================================================
+   CSS VARIABLES
+   ============================================================ */
+:root {
+  --rb-bg: #0f172a;
+  --rb-surface: #1e293b;
+  --rb-card: #ffffff;
+  --rb-card-shadow: 0 5px 20px rgba(0,0,0,0.12);
+  --rb-border: #e2e8f0;
+  --rb-text: #1e293b;
+  --rb-text-muted: #64748b;
+  --rb-primary: #2563eb;
+  --rb-primary-hover: #1d4ed8;
+  --rb-success: #10b981;
+  --rb-warning: #f59e0b;
+  --rb-purple: #8b5cf6;
+  --rb-danger: #ef4444;
+  --rb-radius: 16px;
+  --rb-radius-sm: 10px;
+  --rb-transition: 0.2s ease;
+}
+
+/* ============================================================
+   WRAPPER
+   ============================================================ */
+.rb-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  font-family: 'Inter', sans-serif;
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.rb-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 16px 28px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid rgba(255,255,255,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.rb-logo {
+  font-size: 24px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.rb-nav-tabs {
+  display: flex;
+  gap: 6px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 40px;
+  padding: 4px;
+}
+
+.rb-nav-tabs button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 36px;
+  background: transparent;
+  color: #cbd5e1;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all var(--rb-transition);
+  white-space: nowrap;
+}
+
+.rb-nav-tabs button.active {
+  background: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.rb-nav-tabs button:hover:not(.active) {
+  background: rgba(255,255,255,0.12);
+  color: #ffffff;
+}
+
+.rb-nav-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.rb-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all var(--rb-transition);
+  white-space: nowrap;
+  letter-spacing: 0.3px;
+}
+
+.rb-btn-primary { background: var(--rb-primary); color: #fff; }
+.rb-btn-primary:hover { background: var(--rb-primary-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,99,235,0.4); }
+
+.rb-btn-warning { background: var(--rb-warning); color: #fff; }
+.rb-btn-warning:hover { background: #d97706; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(245,158,11,0.4); }
+
+.rb-btn-purple { background: var(--rb-purple); color: #fff; }
+.rb-btn-purple:hover { background: #7c3aed; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(139,92,246,0.4); }
+
+.rb-btn-danger { background: var(--rb-danger); color: #fff; }
+.rb-btn-danger:hover { background: #dc2626; }
+
+.rb-btn-generate {
+  width: 100%;
+  padding: 18px;
+  border: none;
+  border-radius: var(--rb-radius);
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 800;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  margin-top: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(37,99,235,0.3);
+}
+
+.rb-btn-generate:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(124,58,237,0.5);
+}
+
+.rb-btn-generate:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.rb-btn-small {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  background: #e2e8f0;
+  color: #334155;
+  transition: all var(--rb-transition);
+}
+
+.rb-btn-small:hover { background: #cbd5e1; }
+
+/* ============================================================
+   MAIN CONTENT AREA
+   ============================================================ */
+.rb-main {
+  padding: 24px 28px;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   CARDS
+   ============================================================ */
+.rb-card {
+  background: var(--rb-card);
+  padding: 22px 24px;
+  border-radius: var(--rb-radius);
+  margin-bottom: 16px;
+  box-shadow: var(--rb-card-shadow);
+  border: 2px solid #e2e8f0;
+}
+
+.rb-card h2 {
+  margin: 0 0 14px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.rb-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ============================================================
+   INPUTS
+   ============================================================ */
+.rb-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid #e2e8f0;
+  border-radius: var(--rb-radius-sm);
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+  transition: border-color var(--rb-transition);
+  background: #f8fafc;
+}
+
+.rb-input:focus {
+  outline: none;
+  border-color: var(--rb-primary);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+
+.rb-textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 12px 14px;
+  border: 2px solid #e2e8f0;
+  border-radius: var(--rb-radius-sm);
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  resize: vertical;
+  box-sizing: border-box;
+  transition: border-color var(--rb-transition);
+  background: #f8fafb;
+  line-height: 1.6;
+}
+
+.rb-textarea:focus {
+  outline: none;
+  border-color: var(--rb-primary);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+
+.rb-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.rb-row {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.rb-font-size-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.rb-font-size-control label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+  white-space: nowrap;
+}
+
+.rb-font-size-control input[type="range"] {
+  width: 100px;
+  accent-color: var(--rb-primary);
+}
+
+/* ============================================================
+   EDITOR LAYOUT (Left form + right mini preview)
+   ============================================================ */
+.rb-editor-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.rb-editor-form {
+  max-height: calc(100vh - 140px);
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.rb-editor-form::-webkit-scrollbar { width: 6px; }
+.rb-editor-form::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+
+.rb-editor-preview {
+  position: sticky;
+  top: 100px;
+  background: #f1f5f9;
+  border-radius: var(--rb-radius);
+  padding: 20px;
+  overflow: hidden;
+  box-shadow: var(--rb-card-shadow);
+  border: 2px solid #e2e8f0;
+}
+
+/* ============================================================
+   TEMPLATE GRID
+   ============================================================ */
+.rb-template-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.rb-template-card {
+  border: 3px solid #ddd;
+  border-radius: 14px;
+  padding: 12px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease;
+  background: #fff;
+}
+
+.rb-template-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.rb-template-card.selected {
+  box-shadow: 0 0 0 4px rgba(37,99,235,0.25);
+}
+
+.rb-template-card span {
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.rb-template-preview {
+  padding: 14px 10px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ============================================================
+   SECTION CONFIG (toggle + reorder)
+   ============================================================ */
+.rb-section-config {
+  margin-top: 10px;
+}
+
+.rb-section-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.rb-section-move {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.rb-section-move button {
+  width: 24px;
+  height: 20px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  background: #f8fafc;
+  cursor: pointer;
+  font-size: 10px;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--rb-transition);
+}
+
+.rb-section-move button:hover:not(:disabled) { background: #e2e8f0; }
+.rb-section-move button:disabled { opacity: 0.3; cursor: not-allowed; }
+
+/* ---- Toggle Switch ---- */
+.rb-toggle {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.rb-toggle input { opacity: 0; width: 0; height: 0; }
+
+.rb-toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #cbd5e1;
+  border-radius: 24px;
+  transition: 0.3s;
+}
+
+.rb-toggle-slider::before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: 0.3s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.rb-toggle input:checked + .rb-toggle-slider { background: var(--rb-primary); }
+.rb-toggle input:checked + .rb-toggle-slider::before { transform: translateX(20px); }
+
+/* ============================================================
+   PREVIEW TAB
+   ============================================================ */
+.rb-preview-tab {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.rb-preview-full {
+  width: 100%;
+  max-width: 850px;
+}
+
+/* ============================================================
+   ATS TAB
+   ============================================================ */
+.rb-ats-tab {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.rb-ats-score-card {
+  text-align: center;
+}
+
+.rb-ats-circle {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+  position: relative;
+}
+
+.rb-ats-circle::after {
+  content: "";
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: #fff;
+  position: absolute;
+}
+
+.rb-ats-circle span {
+  position: relative;
+  z-index: 1;
+  font-size: 42px;
+  font-weight: 900;
+  color: #10b981;
+}
+
+.rb-ats-meter {
+  margin-top: 15px;
+}
+
+.rb-ats-meter progress {
+  width: 100%;
+  height: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.rb-ats-meter progress::-webkit-progress-bar { background: #e5e7eb; border-radius: 10px; }
+.rb-ats-meter progress::-webkit-progress-value { background: #10b981; border-radius: 10px; }
+
+.rb-ats-tab ul {
+  padding-left: 20px;
+  line-height: 2;
+}
+
+.rb-ats-tab li {
+  font-size: 14px;
+  color: #334155;
+}
+
+/* ============================================================
+   COVER LETTER TAB
+   ============================================================ */
+.rb-cover-tab {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+.rb-empty-state {
+  text-align: center;
+  padding: 80px 40px;
+  background: rgba(255,255,255,0.05);
+  border-radius: var(--rb-radius);
+  border: 2px dashed rgba(255,255,255,0.2);
+}
+
+.rb-empty-state h2 {
+  color: #e2e8f0;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.rb-empty-state p {
+  color: #94a3b8;
+  margin-bottom: 20px;
+}
+
+/* ============================================================
+   HISTORY PANEL
+   ============================================================ */
+.rb-history-panel {
+  padding: 24px 28px;
+  background: rgba(255,255,255,0.03);
+  border-top: 2px solid rgba(255,255,255,0.08);
+}
+
+.rb-history-panel h2 {
+  color: #ffffff;
+  margin-bottom: 16px;
+  font-size: 20px;
+}
+
+.rb-history-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.rb-history-card {
+  background: rgba(255,255,255,0.08);
+  border: 2px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: all var(--rb-transition);
+}
+
+.rb-history-card:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.2);
+}
+
+.rb-history-card strong {
+  color: #f1f5f9;
+  font-size: 15px;
+}
+
+.rb-history-card span {
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+.rb-history-template {
+  background: rgba(37,99,235,0.2);
+  color: #93c5fd !important;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px !important;
+  display: inline-block;
+  width: fit-content;
+}
+
+.rb-history-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1200px) {
+  .rb-editor-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .rb-editor-preview {
+    display: none;
+  }
+
+  .rb-template-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .rb-navbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .rb-nav-actions {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .rb-template-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rb-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rb-nav-tabs {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+
+  .rb-nav-tabs button {
+    font-size: 12px;
+    padding: 8px 14px;
+  }
+
+  .rb-main {
+    padding: 14px;
+  }
+
+  .rb-nav-actions {
+    flex-wrap: wrap;
+  }
+
+  .rb-btn {
+    font-size: 11px;
+    padding: 8px 14px;
+  }
+
+  .rb-history-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   PRINT STYLES (for PDF export fidelity)
+   ============================================================ */
+@media print {
+  .rb-wrapper { background: #fff; }
+  .rb-navbar, .rb-history-panel, .rb-btn, .rb-editor-form, .rb-editor-preview { display: none !important; }
+  .resume-preview-print {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 30px !important;
+  }
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+.rb-wrapper::-webkit-scrollbar { width: 8px; }
+.rb-wrapper::-webkit-scrollbar-track { background: #0f172a; }
+.rb-wrapper::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+.rb-wrapper::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.rb-card {
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+.rb-card:nth-child(2) { animation-delay: 0.05s; }
+.rb-card:nth-child(3) { animation-delay: 0.1s; }
+.rb-card:nth-child(4) { animation-delay: 0.15s; }
+.rb-card:nth-child(5) { animation-delay: 0.2s; }
+.rb-card:nth-child(6) { animation-delay: 0.25s; }
+.rb-card:nth-child(7) { animation-delay: 0.3s; }
+.rb-card:nth-child(8) { animation-delay: 0.35s; }
+.rb-card:nth-child(9) { animation-delay: 0.4s; }
+.rb-card:nth-child(10) { animation-delay: 0.45s; }

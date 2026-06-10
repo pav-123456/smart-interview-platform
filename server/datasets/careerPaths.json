@@ -1,0 +1,25 @@
+{
+  "Frontend Developer": {
+    "nextRoles": [
+      "Senior Frontend Developer",
+      "UI Engineer",
+      "Frontend Architect"
+    ]
+  },
+
+  "Full Stack Developer": {
+    "nextRoles": [
+      "Senior Full Stack Developer",
+      "Tech Lead",
+      "Engineering Manager"
+    ]
+  },
+
+  "Data Analyst": {
+    "nextRoles": [
+      "Senior Data Analyst",
+      "Data Scientist",
+      "Analytics Manager"
+    ]
+  }
+}
